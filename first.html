@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your Website</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <style>
+    :root {
+      --primary: #8e05c2;
+      --black: #0f0f0f;
+      --white: #fff;
+      --gray: #7a7a7a;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      background-color: var(--black);
+      color: var(--white);
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+
+    body.lock-scroll {
+      overflow: hidden;
+    }
+
+    nav a {
+      transition: all 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #fff !important;
+      text-shadow: 0 0 15px white;
+    }
+
+    .profile-slot {
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    .profile-slot img {
+      border-radius: 50%;
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border: 4px solid var(--primary);
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      background: url('star.jpg') no-repeat center center/cover;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: bold;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero .arrow {
+      position: absolute;
+      bottom: 20px;
+    }
+
+    @keyframes slowMotion {
+      0% {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .slow-motion {
+      animation: slowMotion 2s ease-out;
+    }
+
+    .about {
+      padding: 5rem 0;
+      background-color: #333;
+    }
+
+    .about h2 {
+      font-size: 2rem;
+      color: var(--primary);
+    }
+
+    .about h1 {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+
+    .logo img {
+      width: 50px;
+      height: auto;
+    }
+
+    section {
+      padding-top: 60px;
+    }
+
+    .card {
+      background-color: #222;
+      color: #fff;
+      border: none;
+    }
+
+    #contact {
+      background-color: #222;
+      color: #fff;
+    }
+
+    footer {
+      background-color: #222;
+      color: #fff;
+      padding: 20px 0;
+    }
+
+    #learnMoreBtn {
+      filter: grayscale(100%);
+      transition: filter 0.3s ease;
+    }
+
+    #learnMoreBtn:hover {
+      filter: grayscale(0%);
+    }
+
+    .hidden {
+      transform: translateY(-100%);
+      transition: transform 0.3s ease-in-out;
+    }
+
+    /* Fullscreen Overlay */
+    #overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('eyes.gif') no-repeat center center;
+      background-size: cover;
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      color: white;
+      text-align: center;
+    }
+
+    /* Button Style */
+    #letsGoBtn {
+      font-size: 1.2rem;
+      padding: 15px 30px;
+      background-color: transparent;
+      color: white;
+      border: 2px solid white;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    /* Button Hover Effect */
+    #letsGoBtn:hover {
+      background-color: white;
+      color: #333;
+    }
+  </style>
+</head>
+<body class="lock-scroll">
+
+  <!-- Fullscreen Overlay -->
+  <div id="overlay">
+    <h1 class="mb-4">Welcome to My Portfolio</h1>
+    <button id="letsGoBtn" class="btn btn-outline-light px-4 py-2">Let’s Go 🚀</button>
+  </div>
+
+  <!-- Header (Navbar) -->
+  <header class="fixed-top slow-motion">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-center py-3">
+        <div class="logo">
+          <a href="#" class="text-white fs-4 fw-bold">
+            <img src="lowgow.png" alt="JK Logo">
+          </a>
+        </div>
+        <nav class="d-flex gap-4">
+          <a href="#" class="text-white text-decoration-none">Home</a>
+          <a href="#about" class="text-white text-decoration-none">About</a>
+          <a href="#projects" class="text-white text-decoration-none">Projects</a>
+          <a href="#contact" class="text-white text-decoration-none">Contact</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" style="background-image: url('earth.jpg'); background-size: cover; background-position: center;">
+    <div class="container text-center">
+      <h1 class="text-white slow-motion">Welcome to My Portfolio</h1>
+      <div class="arrow slow-motion">
+        <svg width="50" height="50" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+    </div>
+  </section>
+<!-- About Section -->
+<section id="about" style="background-image: url('smoke.jpg'); background-size: cover; background-position: center center; color: #fff; padding: 60px 0;">
+  <div class="container">
+    <div class="row align-items-center">
+      <!-- Profile Column -->
+      <div class="col-md-4">
+        <h2>About Me</h2>
+        <hr class="w-25">
+        <h1>I'm a Student Web Developer</h1>
+      </div>
+
+      <!-- Profile Slot (Picture and Social Media) -->
+      <div class="col-md-4 text-center profile-slot">
+        <img src="inn.jpeg" alt="JK's Picture" class="rounded-circle" style="width: 150px; height: 150px; object-fit: cover;">
+        <h2>Magat, Jamel Kim</h2>
+        <p>y'all can call me JK</p>
+        
+        <!-- Social Media Slots -->
+        <div class="d-flex justify-content-center gap-3 mt-3">
+          <a href="https://facebook.com" target="_blank">
+            <img src="fb.jpg" alt="Instagram" style="width:50px; height:50px; border-radius: 8px;">
+          </a>
+          <a href="https://www.instagram.com/offthreadz/" target="_blank">
+            <img src="igg.jpg" alt="Instagram" style="width:50px; height:50px; border-radius: 8px;">
+          </a>
+        </div>
+      </div>
+
+      <!-- Button for "Learn More" -->
+      <div class="col-md-4">
+        <p>y'all want to know bout' me?</p>
+        <a href="about-me.html" class="btn btn-outline-light d-flex align-items-center" id="learnMoreBtn">
+          <span class="me-2">JK More</span>
+          <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="feather feather-arrow-right">
+            <polyline points="5 12 19 12"></polyline>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Two Columns Section: Software & Website Development and UI/Graphics Design -->
+    <div class="row mt-5">
+      <!-- First Box: Software & Website Development -->
+      <div class="col-md-6">
+        <h3>Software & Website Development</h3>
+        <p>I use modern tools and technologies to build responsive and dynamic websites and applications. My goal is to create websites that not only look good but work perfectly across all devices.</p>
+        
+        <!-- Mini Logos for Software & Website Development -->
+        <div class="d-flex justify-content-center gap-3">
+          <img src="css.png" alt="CSS" style="width: 50px; height: 50px;">
+          <img src="html.png" alt="HTML" style="width: 50px; height: 50px;">
+          <img src="javaaa.png" alt="Java" style="width: 50px; height: 55px;">
+          <img src="js.png" alt="JavaScript" style="width: 50px; height: 50px;">
+        </div>
+      </div>
+
+      <!-- Second Box: UI/Graphics Design -->
+      <div class="col-md-6">
+        <h3>UI/Graphics Design</h3>
+        <p>Along with web development, I also specialize in designing user-friendly and attractive user interfaces for websites and mobile apps.</p>
+        
+        <!-- Mini Logos for UI/Graphics Design -->
+        <div class="d-flex justify-content-center gap-3">
+          <img src="pss.png" alt="Photoshop" style="width: 50px; height: 50px;">
+          <img src="canvaaa.png" alt="Illustrator" style="width: 60px; height: 65px;">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Projects Section -->
+<section id="projects" class="projects py-5" style="background-image: url('star.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+  <div class="container">
+    <h2 class="text-center text-white mb-4">My Projects</h2>
+
+    <!-- Project One: Video Showcase -->
+    <div class="project-one mb-5">
+      <h3 class="text-center text-white mb-4">Project One: Video Showcase</h3>
+      <div class="row justify-content-center">
+        
+        <!-- Video Box 1: Pokemon Games -->
+        <div class="col-md-4 mb-4">
+          <div class="video-slot">
+            <iframe width="100%" height="215" src="https://www.youtube.com/embed/e-6J9bxH84s" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+          <p class="text-white text-center mt-2">Pokemon Games</p>
+        </div>
+
+        <!-- Video Box 2: TicTacToe -->
+        <div class="col-md-4 mb-4">
+          <div class="video-slot">
+            <iframe width="100%" height="215" src="https://www.youtube.com/embed/we1QgE6n0-Y" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+          <p class="text-white text-center mt-2">Mobile Apps</p>
+        </div>
+
+        <!-- Video Box 3: Color Game -->
+        <div class="col-md-4 mb-4">
+          <div class="video-slot">
+            <iframe width="100%" height="215" src="https://www.youtube.com/embed/TWUGFCjaqsA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+          <p class="text-white text-center mt-2">Color Game</p>
+        </div>
+
+      </div>
+
+      <p class="text-white mt-3">
+        These projects are part of our final project as first-year college students. From mobile-inspired classics like Pokemon Games, TicTacToe, and the Filipino Color Game — each project showcases our passion for coding, design, and game development.
+      </p>
+    </div>
+
+    <!-- Project Two -->
+    <div class="project-two py-5">
+      <h3 class="text-center text-white mb-4">Project Two: Image Showcase First Year Games</h3>
+
+      <div class="row">
+        <!-- Box 1 -->
+        <div class="col-md-4">
+          <div class="image-box">
+            <img src="snakee.png" alt="Image 1" class="img-fluid">
+            <p class="text-white mt-3">The Snake and Apple Game is a classic arcade game where you control a snake that grows longer as it eats apples.</p>
+          </div>
+        </div>
+
+        <!-- Box 2 -->
+        <div class="col-md-4">
+          <div class="image-box">
+            <img src="tictactoe pic.png" alt="Image 2" class="img-fluid">
+            <p class="text-white mt-3">Tic-Tac-Toe is a two-player game where players take turns marking a 3x3 grid with "X" or "O". The goal is to get three in a row horizontally, vertically, or diagonally.</p>
+          </div>
+        </div>
+
+        <!-- Box 3 -->
+        <div class="col-md-4">
+          <div class="image-box">
+            <img src="color game.png" alt="Image 3" class="img-fluid">
+            <p class="text-white mt-3">Color Game is a Filipino gambling game where players bet on the color of a ball drawn from a set. The goal is to guess the correct color.</p>
+          </div>
+        </div>
+
+ <!-- Project Three: Canva Designs -->
+<section id="project-three" class="py-5" style="background-color: #1a1a1a; color: #fff;">
+  <div class="container text-center">
+    <h2 class="mb-4" style="color: #8e05c2;">Project Three: Canva Designs – Client Work</h2>
+    
+    <p class="mb-4">Some recent design work done for clients using Canva. Check them out below! 🌸🖌️</p>
+
+    <!-- Canva Design 1 -->
+    <div class="mb-5">
+      <h4 style="color: #f0c419;">✨ Perfume</h4>
+      <a href="https://www.canva.com/design/DAGZVb2iRmM/tiVkdDG0RfRiN54w13cDmw/edit?utm_content=DAGZVb2iRmM&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" 
+         target="_blank" 
+         class="btn btn-outline-light px-4 py-2 mt-2 mb-3">
+        View Design on Canva 💐
+      </a>
+      <div class="mt-3">
+        <img src="HP.png" alt="Perfume Canva Design" class="img-fluid rounded" style="max-width: 55px;">
+      </div>
+    </div>
+
+    <!-- Canva Design 2 -->
+    <div>
+      <h4 style="color: #f0c419;">✨ Client Poster</h4>
+      <a href="https://www.canva.com/design/DAGdj6JHzHc/nTprtiWAFo4RazQPndKs-w/edit?fbclid=IwY2xjawJvNi5leHRuA2FlbQIxMAABHsSkFdHK8vkCMf1qpzMPxMe5uDyMdw36Gd0dx9eL_40cBos9wRwZedfP1Zqa_aem_Ysj4RsL7w3J-FslpSobGhA"
+         target="_blank"
+         class="btn btn-outline-light px-4 py-2 mt-2 mb-3">
+        View Design on Canva 📢
+      </a>
+      <div class="mt-3">
+        <img src="canvaup.png" alt="Poster Design" class="img-fluid rounded" style="max-width: 100px;">
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+      </div>
+    </div>  
+
+  </div>
+</section>
+
+
+  <!-- Contact Section -->
+<section id="contact" class="contact animate-on-scroll slow-motion">
+  <div class="container text-center py-5">
+    <h2 class="text-white mb-4">Get in Touch</h2>
+    <form class="mx-auto" style="max-width: 500px;">
+      <div class="mb-3">
+        <input type="text" class="form-control" placeholder="Your Name" required>
+      </div>
+      <div class="mb-3">
+        <input type="email" class="form-control" placeholder="Your Email" required>
+      </div>
+      <div class="mb-3">
+        <textarea class="form-control" rows="4" placeholder="Your Message" required></textarea>
+      </div>
+      <button type="submit" class="btn ">Send Message</button>
+    </form>
+  </div>
+</section>
+
+  <!-- Footer -->
+  <footer class="py-4">
+    <div class="container text-center">
+      <p class="text-white mb-1"> <span class="time"></span></p>
+      <p class="text-white mb-3">© 2025 by Magat, Jamel Kim</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Custom JS -->
+  <script>
+    // Navbar hide on scroll
+    let lastScrollTop = 0;
+    const header = document.querySelector("header");
+
+    window.addEventListener("scroll", () => {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      if (scrollTop > lastScrollTop) {
+        header.classList.add("hidden");
+      } else {
+        header.classList.remove("hidden");
+      }
+      lastScrollTop = scrollTop;
+    });
+
+    // Overlay logic
+    document.getElementById("letsGoBtn").addEventListener("click", function () {
+      const overlay = document.getElementById("overlay");
+      overlay.classList.add("hidden");
+      setTimeout(() => {
+        overlay.style.display = "none";
+      }, 1000);
+      document.body.classList.remove("lock-scroll");
+    });
+  </script>
+</body>
+</html>
