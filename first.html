@@ -115,10 +115,7 @@
       border: none;
     }
 
-    #contact {
-      background-color: #222;
-      color: #fff;
-    }
+    
 
     footer {
       background-color: #222;
@@ -399,24 +396,71 @@
 </section>
 
 
-  <!-- Contact Section -->
-<section id="contact" class="contact animate-on-scroll slow-motion">
-  <div class="container text-center py-5">
-    <h2 class="text-white mb-4">Get in Touch</h2>
-    <form class="mx-auto" style="max-width: 500px;">
-      <div class="mb-3">
-        <input type="text" class="form-control" placeholder="Your Name" required>
-      </div>
-      <div class="mb-3">
-        <input type="email" class="form-control" placeholder="Your Email" required>
-      </div>
-      <div class="mb-3">
-        <textarea class="form-control" rows="4" placeholder="Your Message" required></textarea>
-      </div>
-      <button type="submit" class="btn ">Send Message</button>
-    </form>
+
+<!-- Contact Form -->
+<form action="https://formspree.io/f/xldjyang" method="POST">
+  <div style="max-width: 500px; margin: 0 auto; padding: 20px; background-color: #111; color: white; border-radius: 10px;">
+    <h2 style="text-align: center; margin-bottom: 20px;">Contact Us</h2>
+
+    <!-- Email Input -->
+    <label style="display: block; margin-bottom: 10px;">
+      Your Email:
+      <input type="email" name="email" placeholder="Enter your email" required style="width: 100%; padding: 12px; margin-top: 5px; border-radius: 5px; border: none; background-color: #222; color: white;">
+    </label>
+
+    <!-- Message Textarea -->
+    <label style="display: block; margin-bottom: 20px;">
+      Your Message:
+      <textarea name="message" placeholder="Enter your message" required rows="4" style="width: 100%; padding: 12px; margin-top: 5px; border-radius: 5px; border: none; background-color: #222; color: white;"></textarea>
+    </label>
+
+    <!-- Submit Button -->
+    <button type="submit" style="background-color: #4e9af1; color: white; padding: 12px 20px; border-radius: 10px; border: none; cursor: pointer; width: 100%; transition: background-color 0.3s;">
+      Send Message
+    </button>
+
+    <!-- Form Status -->
+    <p id="form-status" style="color: lightgreen; text-align: center; margin-top: 10px; display: none;">Message sent successfully!</p>
+    <p id="form-error" style="color: red; text-align: center; margin-top: 10px; display: none;">Error sending message. Please try again.</p>
   </div>
-</section>
+</form>
+
+<script>
+  const form = document.querySelector("form");
+  const formStatus = document.getElementById("form-status");
+  const formError = document.getElementById("form-error");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    
+    const formData = new FormData(form);
+    const action = form.action;
+
+    try {
+      const response = await fetch(action, {
+        method: "POST",
+        body: formData,
+        headers: {
+          "Accept": "application/json",
+        },
+      });
+
+      if (response.ok) {
+        formStatus.style.display = "block";
+        formError.style.display = "none";
+        form.reset();
+      } else {
+        formStatus.style.display = "none";
+        formError.style.display = "block";
+      }
+    } catch (error) {
+      formStatus.style.display = "none";
+      formError.style.display = "block";
+    }
+  });
+</script>
+
+
 
   <!-- Footer -->
   <footer class="py-4">
